@@ -1,0 +1,41 @@
+plugins {
+  id "java"
+  id "com.ewerk.gradle.plugins.annotation-processor" version "1.0.2"
+}
+
+description = 'basic gradle build'
+group = "griffio"
+version = "0.1.0"
+
+project.ext.sourceCompatibility = 1.7
+project.ext.targetCompatibility = 1.7
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile(
+      'com.mysema.querydsl:querydsl-collections:3.6.8',
+      'com.google.guava:guava:18.0')
+  testCompile(
+      'com.google.guava:guava-testlib:18.0',
+      'org.testng:testng:6.8.8'
+  )
+}
+
+annotationProcessor {
+  library 'com.mysema.querydsl:querydsl-apt:3.6.8'
+  processor 'com.mysema.query.apt.QuerydslAnnotationProcessor'
+  sourcesDir 'src/annotationProcessor/java'
+}
+
+test {
+  useTestNG()
+  minHeapSize = "128m"
+  maxHeapSize = "128m"
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = 2.7
+}
