@@ -18,6 +18,7 @@ import static com.mysema.query.collections.CollQueryFactory.from;
 import static com.mysema.query.group.GroupBy.groupBy;
 import static com.mysema.query.group.GroupBy.sum;
 import static griffio.domain.QEmployeeSalary.employeeSalary;
+import static griffio.domain.QSalaryDetail.create;
 import static griffio.domain.QSalaryDetail.salaryDetail;
 
 @Test
