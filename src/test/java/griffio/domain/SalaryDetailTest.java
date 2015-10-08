@@ -15,7 +15,8 @@ import java.util.Map;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.mysema.query.collections.CollQueryFactory.from;
-import static com.mysema.query.group.GroupBy.*;
+import static com.mysema.query.group.GroupBy.groupBy;
+import static com.mysema.query.group.GroupBy.sum;
 import static griffio.domain.QEmployeeSalary.employeeSalary;
 import static griffio.domain.QSalaryDetail.salaryDetail;
 
@@ -86,12 +87,12 @@ public class SalaryDetailTest {
 
   public void aggregated_by_salary_name() {
 
-    // sorted by salaryName for list grouping to work
-    ImmutableList<SalaryDetail> salaryDetails = ImmutableList.of(smallBonus, bigBonus, commission);
+    ImmutableList<SalaryDetail> salaryDetails = ImmutableList.of(smallBonus, commission, bigBonus);
 
     List<SalaryDetail> actual = from(salaryDetail, salaryDetails)
+        .orderBy(salaryDetail.salaryName.asc())
         .transform(groupBy(salaryDetail.salaryName)
-            .list(QSalaryDetail.create(salaryDetail.salaryName, sum(salaryDetail.salary))));
+            .list(create(salaryDetail.salaryName, sum(salaryDetail.salary))));
 
     assertThat(actual).has().exactly(smallBonus.add(bigBonus), commission);
   }
