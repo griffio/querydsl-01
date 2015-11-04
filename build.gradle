@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
   compile(
-      'com.mysema.querydsl:querydsl-collections:3.6.8',
+      'com.mysema.querydsl:querydsl-collections:3.6.9',
       'com.google.guava:guava:18.0')
   testCompile(
       'com.google.guava:guava-testlib:18.0',
@@ -25,7 +25,7 @@ dependencies {
 }
 
 annotationProcessor {
-  library 'com.mysema.querydsl:querydsl-apt:3.6.8'
+  library 'com.mysema.querydsl:querydsl-apt:3.6.9'
   processor 'com.mysema.query.apt.QuerydslAnnotationProcessor'
   sourcesDir 'src/annotationProcessor/java'
 }
