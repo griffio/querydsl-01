@@ -25,7 +25,7 @@ dependencies {
 }
 
 annotationProcessor {
-  library "com.mysema.querydsl:querydsl-apt:$testngVersion"
+  library "com.mysema.querydsl:querydsl-apt:$querydslVersion"
   processor 'com.mysema.query.apt.QuerydslAnnotationProcessor'
   sourcesDir 'src/annotationProcessor/java'
 }
