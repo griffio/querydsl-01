@@ -16,16 +16,16 @@ repositories {
 
 dependencies {
   compile(
-      'com.mysema.querydsl:querydsl-collections:3.6.9',
-      'com.google.guava:guava:18.0')
+      "com.mysema.querydsl:querydsl-collections:$querydslVersion",
+      "com.google.guava:guava:$guavaVersion")
   testCompile(
-      'com.google.guava:guava-testlib:18.0',
-      'org.testng:testng:6.8.8'
+      "com.google.guava:guava-testlib:$guavaVersion",
+      "org.testng:testng:$testngVersion"
   )
 }
 
 annotationProcessor {
-  library 'com.mysema.querydsl:querydsl-apt:3.6.9'
+  library "com.mysema.querydsl:querydsl-apt:$testngVersion"
   processor 'com.mysema.query.apt.QuerydslAnnotationProcessor'
   sourcesDir 'src/annotationProcessor/java'
 }
